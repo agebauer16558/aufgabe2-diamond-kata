@@ -76,7 +76,40 @@ const createQuadrant = (input) => {
     });
   
     return quadrantArray;
-  };
+}
+
+
+// ## Mirror the input array by its x-axis
+const mirrorByYAxis = (input) => {
+    // The array the mutation is going to be saved in
+    const output = [];
+  
+    // Go in every sub-array (element), save the index of it,
+    // slice the last element and reverse it
+    input.forEach((element, i) => {
+      const tempArr = [];
+      // Start by the first array and slice the last element
+      const slicedElements = element.slice(0, -1);
+  
+      // Reverse the temp array of slicedElements and save it
+      const reverseArray = slicedElements.reverse();
+  
+      // Go into the master-array (i = index 0) and push for every element e
+      // in input-array the value to the output-array
+      for (e = 0; e < input.length; e++) {
+        tempArr.push(input[i][e]);
+      }
+  
+      // Go into the temp reverseArray and push every element to the back of the
+      // output-array
+      for (i = 0; i < reverseArray.length; i++) {
+        tempArr.push(reverseArray[i]);
+      }
+  
+      output.push(tempArr);
+    });
+    return output;
+}
 
 // ## Module Exports go here
-module.exports = { charRange, createQuadrant } 
+module.exports = { charRange, createQuadrant, mirrorByYAxis } 

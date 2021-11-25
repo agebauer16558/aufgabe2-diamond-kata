@@ -1,4 +1,4 @@
-const { charRange, createQuadrant } = require("./diamond-kata");
+const { charRange, createQuadrant, mirrorByYAxis } = require("./diamond-kata");
 
 // charRange
 describe('charRange', () => {
@@ -33,6 +33,46 @@ describe('createQuadrant', () => {
           [ '-', '-', 'C', '-', '-' ],
           [ '-', 'D', '-', '-', '-' ],
           [ 'E', '-', '-', '-', '-' ]
+        ].toString())
+    })
+})
+
+
+// mirrorByYAxis
+describe('mirrorByYAxis', () => {
+    it('provides an array and checks if the output has the desired pattern', () => {
+        expect(mirrorByYAxis([
+            ['-', '-', '-', '-', 'A'],
+            ['-', '-', '-', 'B', '-'],
+            ['-', '-', 'C', '-', '-'],
+            ['-', 'D', '-', '-', '-'],
+            ['E', '-', '-', '-', '-']
+        ]).toString()).toBe([
+            [
+                '-', '-', '-',
+                '-', 'A', '-',
+                '-', '-', '-'
+            ],
+            [
+                '-', '-', '-',
+                'B', '-', 'B',
+                '-', '-', '-'
+            ],
+            [
+                '-', '-', 'C',
+                '-', '-', '-',
+                'C', '-', '-'
+            ],
+            [
+                '-', 'D', '-',
+                '-', '-', '-',
+                '-', 'D', '-'
+            ],
+            [
+                'E', '-', '-',
+                '-', '-', '-',
+                '-', '-', 'E'
+            ]
         ].toString())
     })
 })
