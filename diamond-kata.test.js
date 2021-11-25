@@ -1,5 +1,5 @@
 const { charRange, createQuadrant, mirrorByYAxis, 
-    mirrorByXAxis } = require("./diamond-kata");
+    mirrorByXAxis, diamond } = require("./diamond-kata");
 
 // charRange
 describe('charRange', () => {
@@ -135,5 +135,32 @@ describe('mirrorByXAxis', () => {
         ]
 
         ].toString())
+    })
+})
+
+
+// diamond
+describe('diamond', () => {
+    it('should return nothing', () => {
+        const mockCallback = jest.fn();
+        diamond([], mockCallback);
+    
+        expect(mockCallback.mock.calls.length).toBe(0);
+    })
+
+    it('should return the diamond', () => {    
+        const mockCallback = jest.fn();
+        diamond([
+        ["-", "-", "-", "-", "A", "-", "-", "-", "-"],
+        ["-", "-", "-", "B", "-", "B", "-", "-", "-"],
+        ["-", "-", "C", "-", "-", "-", "C", "-", "-"],
+        ["-", "D", "-", "-", "-", "-", "-", "D", "-"],
+        ["E", "-", "-", "-", "-", "-", "-", "-", "E"],
+        ["-", "D", "-", "-", "-", "-", "-", "D", "-"],
+        ["-", "-", "C", "-", "-", "-", "C", "-", "-"],
+        ["-", "-", "-", "B", "-", "B", "-", "-", "-"],
+        ["-", "-", "-", "-", "A", "-", "-", "-", "-"],
+        ], mockCallback); 
+        expect(mockCallback.mock.calls.length).toBe(9);
     })
 })

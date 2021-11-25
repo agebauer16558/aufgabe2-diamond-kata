@@ -131,6 +131,43 @@ const mirrorByXAxis = (input) => {
     return output;
 }
 
+
+// ## Put the created diamond array into an printed string 
+const diamond = (input, callback) => {
+
+    let elementsInArr = true;
+  
+    // Output array 
+    let stringifiedArr = "";
+  
+    // Check if input has elements in it, if not don't continue
+    if (input.length !== 0) {
+      elementsInArr;
+    }
+    else {
+      !elementsInArr; 
+    }
+  
+    // If true, continue with the program, otherwise throw error
+    if(elementsInArr) {
+  
+      // Join every element in stringifiedArray, and add a line-break after every element 
+      input.forEach((element) => {
+        stringifiedArr += element.join("");
+        stringifiedArr += "\n"; 
+  
+        // If callback true (true if not undefined or 0) 
+        // return the function callback with the array-element as its parameter  
+        if (callback) return callback(element); 
+        })
+    }
+    else {
+      throw new Error ("Start again!")
+    }
+  
+    return stringifiedArr;
+}
+
 // ## Module Exports go here
 module.exports = { charRange, createQuadrant, mirrorByYAxis, 
-    mirrorByXAxis } 
+    mirrorByXAxis, diamond } 
