@@ -49,5 +49,34 @@ const charRange = (letter) => {
     return charArray;
 };
 
+
+// ## Define the first quadrant of the array 
+// ## Push the letters from right to left to the next index
+const createQuadrant = (input) => {
+    const quadrantArray = [];
+    let i = -1;
+   
+    input.forEach((element) => {
+      // Create a new array with the length of input
+      const arr = new Array(input.length);
+  
+      // Fill this array with given string
+      arr.fill("-");
+  
+      // Have a variable iterate upwards
+      i++;
+  
+      // With every element iterate to the left in the array with  
+      const position = input.length - i - 1;
+      
+      // Eqaulize the position in arr with the index of an element of input
+      // Push the element saved in arr[position] into quadrantArray and go again
+      arr[position] = input[i];
+      quadrantArray.push(arr);
+    });
+  
+    return quadrantArray;
+  };
+
 // ## Module Exports go here
-module.exports = { charRange } 
+module.exports = { charRange, createQuadrant } 
