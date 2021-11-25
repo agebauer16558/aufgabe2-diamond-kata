@@ -111,5 +111,26 @@ const mirrorByYAxis = (input) => {
     return output;
 }
 
+
+// ## Mirror the diamond array at its x-axis
+const mirrorByXAxis = (input) => {
+    const output = [];
+  
+    const slicedElements = input.slice(0, -1);
+        
+    const reverseArray = slicedElements.reverse();
+  
+    for (i = 0; i < input.length; i++) {
+      output.push(input[i]);
+    }
+  
+    for (i = 0; i < reverseArray.length; i++) {
+      output.push(reverseArray[i]);
+    }
+  
+    return output;
+}
+
 // ## Module Exports go here
-module.exports = { charRange, createQuadrant, mirrorByYAxis } 
+module.exports = { charRange, createQuadrant, mirrorByYAxis, 
+    mirrorByXAxis } 
