@@ -168,6 +168,43 @@ const diamond = (input, callback) => {
     return stringifiedArr;
 }
 
+
+// User input after file name (e.g. node diamondkata.js t ~)
+const endChar = process.argv[2] || "g";
+const replaceChar = process.argv[3];
+
+// ## Add user-input for letter after file-name
+// ##Optional opportunity to replace the connecting elements ("-") in the diamond
+const index = (endChar) => {
+    
+
+  // When no endChar was entered, throw error 
+  if (endChar === "") {
+  throw new Error ("No letter entered!");
+  }
+
+  const charRangeRes = charRange(endChar);
+  const quadrant = createQuadrant(charRangeRes);
+  const mirroredByY = mirrorByYAxis(quadrant);
+  const mirroredByX = mirrorByXAxis(mirroredByY);
+  const createdDiamond = diamond(mirroredByX);
+
+  // If no replaceChar was added, just save it in output
+  // If replaceChar was added, replace the connecting elements
+  if(!replaceChar) {
+    const output = createdDiamond; 
+    console.log(output);
+    return output;
+  }
+  else {
+    const output = createdDiamond.replace(/-/g, replaceChar);
+    console.log(output);
+    return output;
+  }
+}
+
+index(endChar);
+
 // ## Module Exports go here
 module.exports = { charRange, createQuadrant, mirrorByYAxis, 
-    mirrorByXAxis, diamond } 
+    mirrorByXAxis, diamond, index } 
