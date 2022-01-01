@@ -1,6 +1,35 @@
 const { charRange, createQuadrant, mirrorByYAxis, 
     mirrorByXAxis, diamond } = require("./diamond-kata");
 
+const alphabet = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+      ];
+
 // charRange
 describe('charRange', () => {
     it('enters c to return the alphabet to the letter c', () => {
@@ -14,12 +43,25 @@ describe('charRange', () => {
             'G', 'H'
         ].toString())  
     })
+
+    it('enters H to return the Alphabet until the letter H', () => {
+        expect(charRange('H').toString()).toBe([
+            'A', 'B', 'C',
+            'D', 'E', 'F',
+            'G', 'H'
+        ].toString())  
+    })
+
+    it('enters # to demonstrate the catch when a special character gets entered', () => {
+        expect(() => charRange('#')).toThrow()  
+    })
+
 })
 
 
 // createQuadrant
 describe('createQuadrant', () => {
-    it('provides an array and checks if the output has the desired pattern', () => {
+    it('provides an array and checks if the output expands until letter C.', () => {
         expect(createQuadrant(["A", "B", "C"]).toString()).toBe([
           [ '-', '-', 'A' ],
           [ '-', 'B', '-' ],
@@ -27,7 +69,7 @@ describe('createQuadrant', () => {
         ].toString())
     })
     
-    it('provides an array and checks if the output has the desired pattern', () => {
+    it('provides an array and checks if the output expands until letter E.', () => {
         expect(createQuadrant(["A", "B", "C", "D", "E"]).toString()).toBe([
           [ '-', '-', '-', '-', 'A' ],
           [ '-', '-', '-', 'B', '-' ],
